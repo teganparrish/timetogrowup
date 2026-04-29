@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ═══════════════════════════════════════
+   RESET & ROOT
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --text: #e8e4dc;
+  --dim: #666;
+  --link: #c8c0b0;
+  --link-hover: #ffffff;
+  --accent: #888;
+  --garden-color: #1a1a1a; /* starts near-black, transitions to green */
+  --green-target: #2d6a2d;
+  --progress: 0; /* 0–1, updated by JS */
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IM Fell English', Georgia, serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ═══════════════════════════════════════
+   GARDEN LAYER (SVG silhouettes, bottom)
+═══════════════════════════════════════ */
+#garden {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 45vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#garden svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Garden growth: opacity controlled per-layer by JS */
+.garden-layer { transition: opacity 1.2s ease, fill 2s ease; }
+
+/* ═══════════════════════════════════════
+   GRAIN OVERLAY
+═══════════════════════════════════════ */
+#grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ═══════════════════════════════════════
+   PROGRESS BAR & STAGE LABEL
+═══════════════════════════════════════ */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 1px;
+  background: #333;
+  z-index: 50;
+  transition: width 0.8s ease, background 1s ease;
+}
+
+#stage-label {
+  position: fixed;
+  top: 1.5rem; right: 2rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #222;
+  z-index: 50;
+  transition: color 1s;
+}
+
+/* ═══════════════════════════════════════
+   STAGE WRAPPER
+═══════════════════════════════════════ */
+#stage {
+  position: relative;
+  z-index: 10;
+  display: block;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════
+   ROOM (the text panel)
+═══════════════════════════════════════ */
+.room {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 6vh 1.5rem 44vh;
+  animation: roomIn 0.9s ease both;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-height: 700px) {
+  .room { padding-bottom: 35vh; }
+  #garden { height: 30vh; }
+}
+@media (max-height: 500px) {
+  .room { padding-bottom: 25vh; }
+  #garden { height: 22vh; }
+}
+
+.room.active { display: flex; }
+
+@keyframes roomIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   ROOM HEADER TAG
+═══════════════════════════════════════ */
+.room-tag {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1.2rem;
+}
+
+/* ═══════════════════════════════════════
+   POETRY TEXT
+═══════════════════════════════════════ */
+.poem {
+  font-size: clamp(1rem, 2.2vw, 1.18rem);
+  line-height: 1.85;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+.poem em {
+  font-style: normal;
+  color: #fff;
+}
+
+/* Divider line within poems */
+.poem-rule {
+  width: 40px;
+  height: 1px;
+  background: #333;
+  margin: 1.2rem auto;
+}
+
+/* ═══════════════════════════════════════
+   IMAGE PLACEHOLDER
+   — Replace .img-slot contents with a
+     real <img src="images/stage/name.jpg">
+     when you have assets ready
+═══════════════════════════════════════ */
+.img-slot {
+  width: 100%;
+  max-width: 320px;
+  max-height: 120px;
+  aspect-ratio: 16/6;
+  border: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  flex-shrink: 0;
+}
+
+.img-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 8px,
+    rgba(255,255,255,0.015) 8px, rgba(255,255,255,0.015) 9px
+  );
+}
+
+.img-slot-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+  padding: 0.5rem;
+  line-height: 1.8;
+  position: relative; /* above ::before overlay */
+}
+
+/* ═══════════════════════════════════════
+   AUDIO SLOT
+   — Replace with <audio> tag when ready:
+     <audio src="audio/birth/heartbeat.mp3"
+            autoplay loop></audio>
+═══════════════════════════════════════ */
+.audio-slot {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: #2a2a2a;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.audio-slot::before {
+  content: '♪';
+  font-size: 0.8rem;
+  color: #333;
+}
+
+/* ═══════════════════════════════════════
+   CHOICES
+═══════════════════════════════════════ */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  align-items: center;
+}
+
+.choice {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--link);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.45rem 1.2rem;
+  border-bottom: 1px solid #222;
+  transition: color 0.25s, border-color 0.25s, letter-spacing 0.25s;
+  position: relative;
+}
+
+.choice:hover {
+  color: var(--link-hover);
+  border-color: #555;
+  letter-spacing: 0.28em;
+}
+
+.choice::before {
+  content: '—';
+  margin-right: 0.6rem;
+  opacity: 0.3;
+}
+
+/* Stage-transition / threshold choices */
+.choice.grow {
+  font-size: 0.8rem;
+  border: 1px solid #333;
+  padding: 0.7rem 2.5rem;
+  letter-spacing: 0.3em;
+  margin-top: 0.5rem;
+  color: #aaa;
+}
+
+.choice.grow:hover {
+  border-color: #666;
+  color: #fff;
+  letter-spacing: 0.4em;
+}
+
+/* Final (green) room choices */
+.choice.final-choice {
+  color: #3a7a3a;
+  border-color: #1a4a1a;
+}
+
+.choice.final-choice:hover {
+  color: #5aaa5a;
+  border-color: #3a7a3a;
+}
+
+/* ═══════════════════════════════════════
+   TRANSITIONS (black screen between stages)
+═══════════════════════════════════════ */
+#transition-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#transition-screen.active { display: flex; }
+
+.transition-text {
+  font-style: italic;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #444;
+  max-width: 400px;
+  text-align: center;
+  line-height: 1.8;
+  white-space: pre-line;
+  animation: fadeText 2s ease both;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════
+   FINAL ROOM — GREEN BLOOM
+═══════════════════════════════════════ */
+body.final-room {
+  transition: background 3s ease;
+  background: #050d05;
+}
+
+body.final-room #stage-label { color: #2d5a2d; }
+body.final-room .room-tag    { color: #2d5a2d; }
+body.final-room .poem        { color: #c8dcc8; }
+body.final-room .poem em     { color: #e8f5e8; }
+body.final-room #progress-bar { background: #3a7a3a; }
+
+/* ═══════════════════════════════════════
+   BACK / DEVELOPER NOTES
+   (visible only in dev; hide in production
+    by setting .back-note { display: none })
+═══════════════════════════════════════ */
+.back-note {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  color: #2a2a2a;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  line-height: 1.7;
+}
