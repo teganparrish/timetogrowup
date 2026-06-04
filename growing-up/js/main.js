@@ -310,14 +310,6 @@ function bloomEndFlowers() {
     ctx.arc(x, y, petalR * 0.8, 0, Math.PI * 2);
     ctx.fill();
 
-    // short stem
-    ctx.strokeStyle = '#3a8a1a';
-    ctx.lineWidth   = size * 0.18;
-    ctx.lineCap     = 'round';
-    ctx.beginPath();
-    ctx.moveTo(x, y + offset + petalR * 0.6);
-    ctx.lineTo(x, y + offset + petalR * 0.6 + size * 0.8);
-    ctx.stroke();
 
     ctx.restore();
   }
@@ -344,16 +336,14 @@ function bloomEndFlowers() {
     }
 
     flowers.push({
-      x,
-      y,
-      size:  18 + Math.random() * 22,
-      alpha: 0,
-      // very slow staggered delays — spread over 8 seconds
-      delay: 800 + Math.random() * 8000,
-      // slow fade-in speed
-      fadeSpeed: 0.003 + Math.random() * 0.004,
-      color: greens[Math.floor(Math.random() * greens.length)],
-    });
+  x,
+  y,
+  size:      18 + Math.random() * 22,
+  alpha:     0,
+  delay:     800 + Math.random() * 10000,  // spread over 10 seconds
+  fadeSpeed: 0.001 + Math.random() * 0.002, // much slower fade in
+  color:     greens[Math.floor(Math.random() * greens.length)],
+});
   }
 
   let lastTime = null;
@@ -376,9 +366,9 @@ function bloomEndFlowers() {
       }
       if (f.alpha < 1) allDone = false;
       if (f.alpha > 0) {
-        drawClover(ctx, f.x, f.y, f.size, f.alpha);
-      }
-    });
+  drawClover(ctx, f.x, f.y, f.size, f.alpha, f.color);
+}
+});
 
     if (!allDone) requestAnimationFrame(animate);
   }
