@@ -125,13 +125,12 @@
     </g>
 
     <!-- LAYER 6: Arching canopy — final room only -->
-    <g class="garden-layer" id="g-canopy" style="opacity:0">
-      <path d="M0,0 Q200,100 350,250 Q280,200 200,280 Q100,180 0,80 Z" fill="#111"/>
-      <path d="M1440,0 Q1240,100 1090,250 Q1160,200 1240,280 Q1340,180 1440,80 Z" fill="#111"/>
-      <ellipse cx="320"  cy="240" rx="45" ry="35" fill="#111"/>
-      <ellipse cx="260"  cy="200" rx="35" ry="28" fill="#111"/>
-      <ellipse cx="1120" cy="240" rx="45" ry="35" fill="#111"/>
-      <ellipse cx="1180" cy="200" rx="35" ry="28" fill="#111"/>
+<g class="garden-layer" id="g-canopy" style="opacity:0">
+  <ellipse cx="320"  cy="240" rx="45" ry="35" fill="#111"/>
+  <ellipse cx="260"  cy="200" rx="35" ry="28" fill="#111"/>
+  <ellipse cx="1120" cy="240" rx="45" ry="35" fill="#111"/>
+  <ellipse cx="1180" cy="200" rx="35" ry="28" fill="#111"/>
+</g>
     </g>
 
   </svg>
@@ -849,22 +848,25 @@
   </div>
 
   <!-- END: Stay Here -->
-  <div class="room" id="room-end">
-    <div class="room-tag">The End</div>
-    <div class="poem">
-      <em>you stay</em><br>
-      <div class="poem-rule"></div>
-      the garden keeps growing<br>
-      without you<br>
-      having to do anything<br>
-      <div class="poem-rule"></div>
-      this, too,<br>
-      is a kind of answer
-    </div>
-    <div class="choices">
-      <button class="choice final-choice" onclick="resetJourney()">begin from the start</button>
-    </div>
+<div class="room" id="room-end">
+  <div class="room-tag">The End</div>
+  <div class="poem">
+    <em>you stay</em><br>
+    <div class="poem-rule"></div>
+    the garden keeps growing<br>
+    without you<br>
+    having to do anything<br>
+    <div class="poem-rule"></div>
+    this, too,<br>
+    is a kind of answer
   </div>
+  <div class="choices">
+    <button class="choice final-choice" onclick="resetJourney()">begin from the start</button>
+  </div>
+</div>
+
+<!-- Flower canvas lives OUTSIDE the room div -->
+<canvas id="flower-canvas"></canvas>
 
 </div><!-- /#stage -->
 

@@ -6,12 +6,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0a0a0a;
-  --text: #e8e4dc;
-  --dim: #666;
-  --link: #c8c0b0;
-  --link-hover: #ffffff;
-  --accent: #888;
+  --bg: #f8f5f5;
+  --text: #090909;
+  --dim: #0b0000;
+  --link: #0a0a0a;
+  --link-hover: #0d0c0c;
+  --accent: #0f0e0e;
   --garden-color: #1a1a1a; /* starts near-black, transitions to green */
   --green-target: #2d6a2d;
   --progress: 0; /* 0–1, updated by JS */
@@ -73,7 +73,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   height: 1px;
-  background: #333;
+  background: #0e0e0e;
   z-index: 50;
   transition: width 0.8s ease, background 1s ease;
 }
@@ -141,7 +141,7 @@ body {
   font-size: 0.55rem;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: 444px; var(--dim);
   margin-bottom: 1.2rem;
 }
 
@@ -159,14 +159,14 @@ body {
 
 .poem em {
   font-style: normal;
-  color: #fff;
+  color: #0b0a0a;
 }
 
 /* Divider line within poems */
 .poem-rule {
   width: 40px;
   height: 1px;
-  background: #333;
+  background: #020202;
   margin: 1.2rem auto;
 }
 
@@ -267,7 +267,7 @@ body {
 
 .choice:hover {
   color: var(--link-hover);
-  border-color: #555;
+  border-color: #100f0f;
   letter-spacing: 0.28em;
 }
 
@@ -284,12 +284,12 @@ body {
   padding: 0.7rem 2.5rem;
   letter-spacing: 0.3em;
   margin-top: 0.5rem;
-  color: #aaa;
+  color: #0c0c0c;
 }
 
 .choice.grow:hover {
   border-color: #666;
-  color: #fff;
+  color: #121212;
   letter-spacing: 0.4em;
 }
 
@@ -310,7 +310,7 @@ body {
 #transition-screen {
   position: fixed;
   inset: 0;
-  background: #000;
+  background: #f7f5f5;
   z-index: 100;
   display: none;
   align-items: center;
@@ -324,7 +324,7 @@ body {
 .transition-text {
   font-style: italic;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: #444;
+  color: #0c0c0c;
   max-width: 400px;
   text-align: center;
   line-height: 1.8;
@@ -340,16 +340,18 @@ body {
 /* ═══════════════════════════════════════
    FINAL ROOM — GREEN BLOOM
 ═══════════════════════════════════════ */
-body.final-room {
+  body.final-room {
+  background: #f5f0e8 !important;
+  color: #1a1a1a !important;
   transition: background 3s ease;
-  background: #000300;
 }
 
-body.final-room #stage-label { color: #2d5a2d; }
 body.final-room .room-tag    { color: #2d5a2d; }
-body.final-room .poem        { color: #c8dcc8; }
-body.final-room .poem em     { color: #e8f5e8; }
+body.final-room .poem        { color: #1a1a1a; }
+body.final-room .poem em     { color: #000; }
 body.final-room #progress-bar { background: #3a7a3a; }
+body.final-room .choice      { color: #1a1a1a; border-color: #999; }
+body.final-room .choice:hover { color: #000; border-color: #333; }
 
 /* ═══════════════════════════════════════
    BACK / DEVELOPER NOTES
@@ -409,4 +411,22 @@ body.final-room #progress-bar { background: #3a7a3a; }
     margin: 0 auto;
     display: block;
   }
+}
+  #flower-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+#room-end .room-tag,
+#room-end .poem,
+#room-end .choices {
+  position: relative;
+  z-index: 10;
 }

@@ -174,6 +174,8 @@ function triggerFinalRoom() {
 
   document.body.classList.add('final-room');
   document.getElementById('stage-label').textContent = STAGE_LABELS.final;
+   document.body.style.background = '#f5f0e8';
+  document.body.style.color = '#1a1a1a';
 
   // Fully reveal every garden layer with a slow fade
   GARDEN_LAYERS.forEach(layer => {
@@ -213,6 +215,9 @@ function stayHere() {
   if (cur) cur.classList.remove('active');
   const end = document.getElementById('room-end');
   if (end) end.classList.add('active');
+
+  // Bloom flowers after a short pause
+  setTimeout(bloomEndFlowers, 600);
 }
 
 /** Reset everything and optionally restart from the beginning */
@@ -263,4 +268,120 @@ function updateStageLabel(roomId) {
 /* ══════════════════════════════════════════
    INIT
 ══════════════════════════════════════════ */
-updateProgress();
+function bloomEndFlowers() {
+  const canvas = document.getElementById('flower-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.style.opacity = '1';
+
+  const greens = ['#5abf2a', '#4aaa20', '#6acf3a', '#3a9a1a', '#72d040'];
+
+  // Draw a single 4-petal clover flower like the reference image
+  function drawClover(ctx, x, y, size, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = greens[Math.floor(Math.random() * greens.length)];
+
+    // 4 petals — each is an offset circle
+    const offset = size * 0.55;
+    const petalR = size * 0.65;
+
+    // top petal
+    ctx.beginPath();
+    ctx.arc(x, y - offset, petalR, 0, Math.PI * 2);
+    ctx.fill();
+    // bottom petal
+    ctx.beginPath();
+    ctx.arc(x, y + offset, petalR, 0, Math.PI * 2);
+    ctx.fill();
+    // left petal
+    ctx.beginPath();
+    ctx.arc(x - offset, y, petalR, 0, Math.PI * 2);
+    ctx.fill();
+    // right petal
+    ctx.beginPath();
+    ctx.arc(x + offset, y, petalR, 0, Math.PI * 2);
+    ctx.fill();
+    // centre fill to merge petals
+    ctx.beginPath();
+    ctx.arc(x, y, petalR * 0.8, 0, Math.PI * 2);
+    ctx.fill();
+
+    // short stem
+    ctx.strokeStyle = '#3a8a1a';
+    ctx.lineWidth   = size * 0.18;
+    ctx.lineCap     = 'round';
+    ctx.beginPath();
+    ctx.moveTo(x, y + offset + petalR * 0.6);
+    ctx.lineTo(x, y + offset + petalR * 0.6 + size * 0.8);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  const flowers = [];
+  const gardenHeight = window.innerHeight * 0.42; // leave garden area clear
+
+  for (let i = 0; i < 28; i++) {
+    const side = Math.random();
+    let x, y;
+
+    if (side < 0.3) {
+      // left strip
+      x = 30 + Math.random() * 200;
+      y = 40 + Math.random() * (window.innerHeight - gardenHeight - 40);
+    } else if (side < 0.6) {
+      // right strip
+      x = window.innerWidth - 30 - Math.random() * 200;
+      y = 40 + Math.random() * (window.innerHeight - gardenHeight - 40);
+    } else {
+      // top strip
+      x = Math.random() * window.innerWidth;
+      y = 30 + Math.random() * 160;
+    }
+
+    flowers.push({
+      x,
+      y,
+      size:  18 + Math.random() * 22,
+      alpha: 0,
+      // very slow staggered delays — spread over 8 seconds
+      delay: 800 + Math.random() * 8000,
+      // slow fade-in speed
+      fadeSpeed: 0.003 + Math.random() * 0.004,
+      color: greens[Math.floor(Math.random() * greens.length)],
+    });
+  }
+
+  let lastTime = null;
+  let startTime = null;
+
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    if (!lastTime)  lastTime  = timestamp;
+    const elapsed = timestamp - startTime;
+    const delta   = timestamp - lastTime;
+    lastTime = timestamp;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let allDone = true;
+
+    flowers.forEach(f => {
+      if (elapsed > f.delay) {
+        f.alpha = Math.min(f.alpha + f.fadeSpeed * (delta / 16), 1);
+      }
+      if (f.alpha < 1) allDone = false;
+      if (f.alpha > 0) {
+        drawClover(ctx, f.x, f.y, f.size, f.alpha);
+      }
+    });
+
+    if (!allDone) requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
