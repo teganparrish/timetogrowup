@@ -108,8 +108,7 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 540px;
+  max-width: 680px;
   width: 100%;
   margin: 0 auto;
   padding: 6vh 1.5rem 44vh;
@@ -343,7 +342,7 @@ body {
 ═══════════════════════════════════════ */
 body.final-room {
   transition: background 3s ease;
-  background: #050d05;
+  background: #000300;
 }
 
 body.final-room #stage-label { color: #2d5a2d; }
@@ -365,4 +364,49 @@ body.final-room #progress-bar { background: #3a7a3a; }
   text-transform: uppercase;
   margin-top: 1.5rem;
   line-height: 1.7;
+}
+.room-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.room-content .poem {
+  flex: 1;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.room-image {
+  flex: 0 0 200px;   /* fixed width, won't grow or shrink */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.room-image img {
+  width: 200px;
+  height: auto;
+  opacity: 0.85;
+}
+
+@media (max-width: 520px) {
+  .room-content {
+    flex-direction: column;
+  }
+  .room-content .poem {
+    text-align: center;
+  }
+  .room-image {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .room-image img {
+    width: 160px;
+    margin: 0 auto;
+    display: block;
+  }
 }

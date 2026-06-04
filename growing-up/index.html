@@ -175,13 +175,12 @@
 
   <!-- B-01: The First Dark -->
   <div class="room" id="room-B01">
-    <div class="room-tag">Birth · I</div>
-    <!-- AUDIO PLACEHOLDER — replace with:
-         <audio src="audio/birth/heartbeat.mp3" autoplay loop></audio> -->
-    <div class="audio-slot">/* AUDIO: low hum, heartbeat pulse, womb ambience */</div>
-    <!-- IMAGE PLACEHOLDER — replace with:
-         <div class="img-slot"><img src="images/birth/first-dark.jpg" alt=""></div> -->
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: total black<br>or extreme close-up of warmth<br>(skin, light through fingers) */</div></div>
+  <div class="room-tag">Birth · I</div>
+  <!-- AUDIO PLACEHOLDER — replace with:
+    <audio src="audio/birth/heartbeat.mp3" autoplay loop></audio> -->
+  <div class="audio-slot">/* AUDIO: low hum, heartbeat pulse, womb ambience */</div>
+
+  <div class="room-content">
     <div class="poem">
       warmth surrounds<br>
       <em>it's HOT</em><br>
@@ -196,11 +195,16 @@
       tugged by some invisible force<br>
       this is you
     </div>
-    <div class="choices">
-      <button class="choice" onclick="go('B02a')">open your eyes</button>
-      <button class="choice" onclick="go('B02b')">cry</button>
+    <div class="room-image">
+      <img src="images/baby-face.jpg"alt="">
     </div>
   </div>
+
+  <div class="choices">
+    <button class="choice" onclick="go('B02a')">open your eyes</button>
+    <button class="choice" onclick="go('B02b')">cry</button>
+  </div>
+</div>
 
   <!-- B-02a: Light Floods In -->
   <div class="room" id="room-B02a">
