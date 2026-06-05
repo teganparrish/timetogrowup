@@ -95,23 +95,27 @@ function stageTransition(stage, nextRoom) {
     teen:  'a black screen.\na door.\nthe sound of a school bell.',
     adult: 'your name\non a form.\na key.\na number in a bank account\nthat is only yours.'
   };
-
-  const screen = document.getElementById('transition-screen');
-  const textEl = document.getElementById('transition-text');
+   const screen   = document.getElementById('transition-screen');
+  const textEl   = document.getElementById('transition-text');
+  const bellEl   = document.getElementById('bell-container');
 
   textEl.textContent = messages[stage] || '';
   screen.classList.add('active');
 
-  // Update stage label during the black screen
+  // Show bell only for birth → teen transition
+  if (bellEl) {
+    bellEl.style.display = stage === 'teen' ? 'block' : 'none';
+  }
+
   document.getElementById('stage-label').textContent =
     STAGE_LABELS[stage === 'teen' ? 'teen' : 'adult'];
 
   setTimeout(() => {
     screen.classList.remove('active');
+    if (bellEl) bellEl.style.display = 'none';
     go(nextRoom);
   }, 2800);
 }
-
 /* ══════════════════════════════════════════
    PROGRESS & GARDEN
 ══════════════════════════════════════════ */
@@ -252,6 +256,12 @@ function resetJourney() {
   document.querySelectorAll('.room').forEach(r => r.classList.remove('active'));
   const title = document.getElementById('room-title');
   if (title) title.classList.add('active');
+  const canvas = document.getElementById('flower-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.style.opacity = '0';
+  }
 }
 
 /* ══════════════════════════════════════════

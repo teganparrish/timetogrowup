@@ -8,154 +8,108 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     FIXED UI ELEMENTS
-═══════════════════════════════════════ -->
 <div id="grain"></div>
 <div id="progress-bar"></div>
 <div id="stage-label">Birth</div>
 
-<!-- ═══════════════════════════════════════
-     GARDEN SILHOUETTE (fixed to bottom)
-     Layers fade in as progress increases.
-     On the final room all layers go green.
-═══════════════════════════════════════ -->
 <div id="garden">
   <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
-
-    <!-- LAYER 1: Ground + grass blades — appears from the very start -->
     <g class="garden-layer" id="g-grass" style="opacity:0">
       <rect x="0" y="370" width="1440" height="30" fill="#111"/>
       <g fill="#111" stroke="none">
-        <polygon points="50,370 53,340 56,370"/>
-        <polygon points="80,370 84,335 88,370"/>
-        <polygon points="120,370 123,345 126,370"/>
-        <polygon points="160,370 165,330 170,370"/>
-        <polygon points="200,370 203,342 206,370"/>
-        <polygon points="250,370 255,328 260,370"/>
-        <polygon points="300,370 304,338 308,370"/>
-        <polygon points="340,370 343,350 346,370"/>
-        <polygon points="380,370 384,332 388,370"/>
-        <polygon points="430,370 435,325 440,370"/>
-        <polygon points="480,370 484,340 488,370"/>
-        <polygon points="520,370 524,348 528,370"/>
-        <polygon points="570,370 574,333 578,370"/>
-        <polygon points="620,370 625,328 630,370"/>
-        <polygon points="660,370 663,345 666,370"/>
-        <polygon points="700,370 704,337 708,370"/>
-        <polygon points="750,370 754,330 758,370"/>
-        <polygon points="790,370 793,348 796,370"/>
-        <polygon points="830,370 834,336 838,370"/>
-        <polygon points="880,370 885,325 890,370"/>
-        <polygon points="930,370 934,342 938,370"/>
-        <polygon points="970,370 975,330 980,370"/>
-        <polygon points="1010,370 1014,348 1018,370"/>
-        <polygon points="1060,370 1065,335 1070,370"/>
-        <polygon points="1110,370 1115,328 1120,370"/>
-        <polygon points="1150,370 1153,344 1156,370"/>
-        <polygon points="1190,370 1194,338 1198,370"/>
-        <polygon points="1240,370 1245,330 1250,370"/>
-        <polygon points="1290,370 1295,342 1300,370"/>
-        <polygon points="1330,370 1334,350 1338,370"/>
-        <polygon points="1380,370 1385,335 1390,370"/>
-        <polygon points="1420,370 1424,340 1428,370"/>
+        <polygon points="50,370 53,340 56,370"/><polygon points="80,370 84,335 88,370"/>
+        <polygon points="120,370 123,345 126,370"/><polygon points="160,370 165,330 170,370"/>
+        <polygon points="200,370 203,342 206,370"/><polygon points="250,370 255,328 260,370"/>
+        <polygon points="300,370 304,338 308,370"/><polygon points="340,370 343,350 346,370"/>
+        <polygon points="380,370 384,332 388,370"/><polygon points="430,370 435,325 440,370"/>
+        <polygon points="480,370 484,340 488,370"/><polygon points="520,370 524,348 528,370"/>
+        <polygon points="570,370 574,333 578,370"/><polygon points="620,370 625,328 630,370"/>
+        <polygon points="660,370 663,345 666,370"/><polygon points="700,370 704,337 708,370"/>
+        <polygon points="750,370 754,330 758,370"/><polygon points="790,370 793,348 796,370"/>
+        <polygon points="830,370 834,336 838,370"/><polygon points="880,370 885,325 890,370"/>
+        <polygon points="930,370 934,342 938,370"/><polygon points="970,370 975,330 980,370"/>
+        <polygon points="1010,370 1014,348 1018,370"/><polygon points="1060,370 1065,335 1070,370"/>
+        <polygon points="1110,370 1115,328 1120,370"/><polygon points="1150,370 1153,344 1156,370"/>
+        <polygon points="1190,370 1194,338 1198,370"/><polygon points="1240,370 1245,330 1250,370"/>
+        <polygon points="1290,370 1295,342 1300,370"/><polygon points="1330,370 1334,350 1338,370"/>
+        <polygon points="1380,370 1385,335 1390,370"/><polygon points="1420,370 1424,340 1428,370"/>
       </g>
     </g>
-
-    <!-- LAYER 2: Small shrubs — appear during Birth stage -->
     <g class="garden-layer" id="g-shrubs" style="opacity:0">
-      <ellipse cx="80"   cy="358" rx="55" ry="28" fill="#111"/>
-      <ellipse cx="40"   cy="365" rx="35" ry="20" fill="#111"/>
-      <ellipse cx="130"  cy="362" rx="40" ry="22" fill="#111"/>
-      <ellipse cx="1360" cy="358" rx="55" ry="28" fill="#111"/>
-      <ellipse cx="1400" cy="365" rx="35" ry="20" fill="#111"/>
-      <ellipse cx="1310" cy="362" rx="40" ry="22" fill="#111"/>
-      <ellipse cx="500"  cy="365" rx="30" ry="18" fill="#111"/>
-      <ellipse cx="940"  cy="365" rx="30" ry="18" fill="#111"/>
+      <ellipse cx="80" cy="358" rx="55" ry="28" fill="#111"/><ellipse cx="40" cy="365" rx="35" ry="20" fill="#111"/>
+      <ellipse cx="130" cy="362" rx="40" ry="22" fill="#111"/><ellipse cx="1360" cy="358" rx="55" ry="28" fill="#111"/>
+      <ellipse cx="1400" cy="365" rx="35" ry="20" fill="#111"/><ellipse cx="1310" cy="362" rx="40" ry="22" fill="#111"/>
+      <ellipse cx="500" cy="365" rx="30" ry="18" fill="#111"/><ellipse cx="940" cy="365" rx="30" ry="18" fill="#111"/>
     </g>
-
-    <!-- LAYER 3: Flowers — appear during Teen stage -->
     <g class="garden-layer" id="g-flowers" style="opacity:0">
       <g fill="#111">
-        <rect x="155" y="340" width="3" height="30"/>
-        <circle cx="156" cy="335" r="8"/>
-        <rect x="185" y="345" width="2" height="25"/>
-        <circle cx="186" cy="341" r="6"/>
-        <rect x="215" y="338" width="3" height="32"/>
-        <circle cx="216" cy="333" r="9"/>
-        <rect x="1225" y="340" width="3" height="30"/>
-        <circle cx="1226" cy="335" r="8"/>
-        <rect x="1255" y="345" width="2" height="25"/>
-        <circle cx="1256" cy="341" r="6"/>
-        <rect x="1280" y="338" width="3" height="32"/>
-        <circle cx="1281" cy="333" r="9"/>
-        <rect x="680" y="355" width="2" height="15"/>
-        <circle cx="681" cy="351" r="5"/>
-        <rect x="760" y="358" width="2" height="12"/>
-        <circle cx="761" cy="354" r="4"/>
+        <rect x="155" y="340" width="3" height="30"/><circle cx="156" cy="335" r="8"/>
+        <rect x="185" y="345" width="2" height="25"/><circle cx="186" cy="341" r="6"/>
+        <rect x="215" y="338" width="3" height="32"/><circle cx="216" cy="333" r="9"/>
+        <rect x="1225" y="340" width="3" height="30"/><circle cx="1226" cy="335" r="8"/>
+        <rect x="1255" y="345" width="2" height="25"/><circle cx="1256" cy="341" r="6"/>
+        <rect x="1280" y="338" width="3" height="32"/><circle cx="1281" cy="333" r="9"/>
+        <rect x="680" y="355" width="2" height="15"/><circle cx="681" cy="351" r="5"/>
+        <rect x="760" y="358" width="2" height="12"/><circle cx="761" cy="354" r="4"/>
       </g>
     </g>
-
-    <!-- LAYER 4: Medium trees — appear late Teen / early Adult -->
     <g class="garden-layer" id="g-trees-sm" style="opacity:0">
-      <rect x="60"   y="270" width="8" height="100" fill="#111"/>
-      <ellipse cx="64"   cy="255" rx="40" ry="50" fill="#111"/>
-      <rect x="170"  y="295" width="6" height="75"  fill="#111"/>
-      <ellipse cx="173"  cy="283" rx="30" ry="38" fill="#111"/>
-      <rect x="1372" y="270" width="8" height="100" fill="#111"/>
-      <ellipse cx="1376" cy="255" rx="40" ry="50" fill="#111"/>
-      <rect x="1265" y="295" width="6" height="75"  fill="#111"/>
-      <ellipse cx="1268" cy="283" rx="30" ry="38" fill="#111"/>
+      <rect x="60" y="270" width="8" height="100" fill="#111"/><ellipse cx="64" cy="255" rx="40" ry="50" fill="#111"/>
+      <rect x="170" y="295" width="6" height="75" fill="#111"/><ellipse cx="173" cy="283" rx="30" ry="38" fill="#111"/>
+      <rect x="1372" y="270" width="8" height="100" fill="#111"/><ellipse cx="1376" cy="255" rx="40" ry="50" fill="#111"/>
+      <rect x="1265" y="295" width="6" height="75" fill="#111"/><ellipse cx="1268" cy="283" rx="30" ry="38" fill="#111"/>
     </g>
-
-    <!-- LAYER 5: Tall trees — appear during Adult stage -->
     <g class="garden-layer" id="g-trees-lg" style="opacity:0">
-      <rect x="15"   y="180" width="10" height="190" fill="#111"/>
-      <ellipse cx="20"   cy="160" rx="50" ry="70" fill="#111"/>
-      <ellipse cx="10"   cy="200" rx="30" ry="45" fill="#111"/>
-      <ellipse cx="35"   cy="195" rx="30" ry="40" fill="#111"/>
-      <rect x="1415" y="180" width="10" height="190" fill="#111"/>
-      <ellipse cx="1420" cy="160" rx="50" ry="70" fill="#111"/>
-      <ellipse cx="1410" cy="200" rx="30" ry="45" fill="#111"/>
-      <ellipse cx="1435" cy="195" rx="30" ry="40" fill="#111"/>
-      <rect x="240"  y="220" width="8"  height="150" fill="#111"/>
-      <ellipse cx="244"  cy="205" rx="42" ry="55" fill="#111"/>
-      <rect x="1192" y="220" width="8"  height="150" fill="#111"/>
-      <ellipse cx="1196" cy="205" rx="42" ry="55" fill="#111"/>
+      <rect x="15" y="180" width="10" height="190" fill="#111"/><ellipse cx="20" cy="160" rx="50" ry="70" fill="#111"/>
+      <ellipse cx="10" cy="200" rx="30" ry="45" fill="#111"/><ellipse cx="35" cy="195" rx="30" ry="40" fill="#111"/>
+      <rect x="1415" y="180" width="10" height="190" fill="#111"/><ellipse cx="1420" cy="160" rx="50" ry="70" fill="#111"/>
+      <ellipse cx="1410" cy="200" rx="30" ry="45" fill="#111"/><ellipse cx="1435" cy="195" rx="30" ry="40" fill="#111"/>
+      <rect x="240" y="220" width="8" height="150" fill="#111"/><ellipse cx="244" cy="205" rx="42" ry="55" fill="#111"/>
+      <rect x="1192" y="220" width="8" height="150" fill="#111"/><ellipse cx="1196" cy="205" rx="42" ry="55" fill="#111"/>
     </g>
-
-    <!-- LAYER 6: Arching canopy — final room only -->
-<g class="garden-layer" id="g-canopy" style="opacity:0">
-  <ellipse cx="320"  cy="240" rx="45" ry="35" fill="#111"/>
-  <ellipse cx="260"  cy="200" rx="35" ry="28" fill="#111"/>
-  <ellipse cx="1120" cy="240" rx="45" ry="35" fill="#111"/>
-  <ellipse cx="1180" cy="200" rx="35" ry="28" fill="#111"/>
-</g>
+    <g class="garden-layer" id="g-canopy" style="opacity:0">
+      <ellipse cx="320" cy="240" rx="45" ry="35" fill="#111"/><ellipse cx="260" cy="200" rx="35" ry="28" fill="#111"/>
+      <ellipse cx="1120" cy="240" rx="45" ry="35" fill="#111"/><ellipse cx="1180" cy="200" rx="35" ry="28" fill="#111"/>
     </g>
-
   </svg>
-</div><!-- /#garden -->
+</div>
 
-<!-- ═══════════════════════════════════════
-     STAGE TRANSITION SCREEN
-     (black screen with atmospheric text
-      shown between Birth→Teen and Teen→Adult)
-═══════════════════════════════════════ -->
 <div id="transition-screen">
+
+  <!-- Bell: birth → teen -->
+  <div id="bell-container" style="display:none;">
+    <svg class="bell-pivot" viewBox="0 0 160 200" width="140" height="175" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="80" cy="22" rx="13" ry="16" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M 80 36 C 80 36, 88 40, 92 48 C 100 62, 108 80, 114 100 C 120 118, 124 135, 126 148 C 128 158, 128 164, 124 168 C 118 174, 108 176, 96 177 L 60 177 C 46 176, 36 174, 32 168 C 28 162, 30 152, 34 142 C 40 124, 50 104, 60 84 C 68 66, 74 50, 78 40 C 79 38, 80 36, 80 36 Z" fill="none" stroke="#1a1a1a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="78" cy="174" rx="48" ry="10" fill="none" stroke="#1a1a1a" stroke-width="3.2" stroke-linecap="round"/>
+      <g class="clapper" style="transform-origin: 78px 168px;">
+        <line x1="78" y1="168" x2="78" y2="188" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="78" cy="193" r="8" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      </g>
+      <path d="M 68 55 C 62 72, 56 92, 52 112" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- Figures: teen → adult (your drawing split in two) -->
+  <div id="figures-container" style="display:none;">
+    <div class="transition-scene">
+      <img id="fig-teen"
+           src="teen-figure.png"
+           alt="teen figure"
+           class="figure-teen">
+      <img id="fig-adult"
+           src="adult-figure.png"
+           alt="adult figure"
+           class="figure-adult">
+    </div>
+  </div>
+
   <div class="transition-text" id="transition-text"></div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     ALL ROOMS
-     Each .room div = one Twine passage.
-     onclick calls go(), stageTransition(),
-     stayHere(), or resetJourney() from main.js
-═══════════════════════════════════════ -->
 <div id="stage">
 
-  <!-- ══════════════════════════════
-       TITLE CARD
-  ══════════════════════════════ -->
+  <!-- TITLE -->
   <div class="room active" id="room-title">
     <div class="room-tag"></div>
     <div class="poem">
@@ -168,48 +122,39 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════
-       STAGE 1: BIRTH
-  ══════════════════════════════ -->
+  <!-- ══ BIRTH ══ -->
 
-  <!-- B-01: The First Dark -->
   <div class="room" id="room-B01">
-  <div class="room-tag">Birth · I</div>
-  <!-- AUDIO PLACEHOLDER — replace with:
-    <audio src="audio/birth/heartbeat.mp3" autoplay loop></audio> -->
-  <div class="audio-slot">/* AUDIO: low hum, heartbeat pulse, womb ambience */</div>
-
-  <div class="room-content">
-    <div class="poem">
-      warmth surrounds<br>
-      <em>it's HOT</em><br>
-      and it beats, beats, beats<br>
-      but not one that's yours<br>
-      <div class="poem-rule"></div>
-      in that red-wine sea<br>
-      can you hear it?<br>
-      buzz through you like vibrations<br>
-      as you suspend<br>
-      <div class="poem-rule"></div>
-      tugged by some invisible force<br>
-      this is you
+    <div class="room-tag">Birth · I</div>
+    <div class="audio-slot">/* AUDIO: low hum, heartbeat pulse, womb ambience */</div>
+    <div class="room-content">
+      <div class="poem">
+        warmth surrounds<br>
+        <em>it's HOT</em><br>
+        and it beats, beats, beats<br>
+        but not one that's yours<br>
+        <div class="poem-rule"></div>
+        in that red-wine sea<br>
+        can you hear it?<br>
+        buzz through you like vibrations<br>
+        as you suspend<br>
+        <div class="poem-rule"></div>
+        tugged by some invisible force<br>
+        this is you
+      </div>
+      <div class="room-image">
+    
+      </div>
     </div>
-    <div class="room-image">
-      <img src="images/baby-face.jpg"alt="">
+    <div class="choices">
+      <button class="choice" onclick="go('B02a')">open your eyes</button>
+      <button class="choice" onclick="go('B02b')">cry</button>
     </div>
   </div>
 
-  <div class="choices">
-    <button class="choice" onclick="go('B02a')">open your eyes</button>
-    <button class="choice" onclick="go('B02b')">cry</button>
-  </div>
-</div>
-
-  <!-- B-02a: Light Floods In -->
   <div class="room" id="room-B02a">
     <div class="room-tag">Birth · II</div>
     <div class="audio-slot">/* AUDIO: sudden ambient rush, high gentle tone */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: overexposed white<br>blurring into shapes — light spill */</div></div>
     <div class="poem">
       <em>piercing</em><br>
       white bright, white light<br>
@@ -227,11 +172,9 @@
     </div>
   </div>
 
-  <!-- B-02b: The Cry -->
   <div class="room" id="room-B02b">
     <div class="room-tag">Birth · II</div>
     <div class="audio-slot">/* AUDIO: newborn cry fading to silence, then soft lullaby */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: open mouth, abstracted<br>or hands holding something small */</div></div>
     <div class="poem">
       eruption<br>
       sounds bursts out<br>
@@ -252,11 +195,9 @@
     </div>
   </div>
 
-  <!-- B-03: First Smile -->
   <div class="room" id="room-B03">
     <div class="room-tag">Birth · III</div>
     <div class="audio-slot">/* AUDIO: soft laughter, warm room ambience */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: close-up of laughing face<br>(adult, looking down at you)<br>b&w, warm light */</div></div>
     <div class="poem">
       a face above yours<br>
       <em>creases</em><br>
@@ -277,11 +218,9 @@
     </div>
   </div>
 
-  <!-- B-04: The Floor Is Everything -->
   <div class="room" id="room-B04">
     <div class="room-tag">Birth · IV</div>
     <div class="audio-slot">/* AUDIO: carpet texture sounds, distant voices, movement */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: worm's-eye view of a room —<br>chair legs, carpet, a patch of light<br>across the floor */</div></div>
     <div class="poem">
       the floor is<br>
       <em>an entire country</em><br>
@@ -303,11 +242,9 @@
     </div>
   </div>
 
-  <!-- B-05: First Words -->
   <div class="room" id="room-B05">
     <div class="room-tag">Birth · V</div>
     <div class="audio-slot">/* AUDIO: hush of a room, then one syllable, then gasps/delight */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: open hand, fingers spread —<br>or a mouth mid-word, black and white */</div></div>
     <div class="poem">
       a syllable escapes—<br>
       <em>clumsy</em><br>
@@ -329,11 +266,14 @@
     </div>
   </div>
 
-  <!-- B-06: The Cake With Candles (Birth → Teen threshold) -->
+  <!-- B-06: TRANSITION ROOM — image slot kept -->
   <div class="room" id="room-B06">
     <div class="room-tag">Birth · Threshold</div>
     <div class="audio-slot">/* AUDIO: happy birthday being sung, off-key and warm */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: birthday cake with lit candles<br>extreme close-up, candlelight glow<br>faces blurred in background */</div></div>
+    <div class="img-slot">
+      <!-- Replace with: <img src="images/birth/candles.jpg" alt="birthday candles"> -->
+      <div class="img-slot-label">/* IMAGE: birthday cake with lit candles<br>extreme close-up, candlelight glow<br>faces blurred in background */</div>
+    </div>
     <div class="poem">
       a room full of people<br>
       singing<br>
@@ -353,15 +293,11 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════
-       STAGE 2: TEEN YEAR
-  ══════════════════════════════ -->
+  <!-- ══ TEEN YEARS ══ -->
 
-  <!-- T-01: The Mirror -->
   <div class="room" id="room-T01">
     <div class="room-tag">Teen Years · I</div>
     <div class="audio-slot">/* AUDIO: school hall noise, distant chatter, locker doors */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: mirror reflection, face<br>cut off or fragmented — tile/glass<br>distortion. b&w, high contrast */</div></div>
     <div class="poem">
       your body has changed<br>
       <em>without asking permission</em><br>
@@ -383,11 +319,9 @@
     </div>
   </div>
 
-  <!-- T-02: Body Image -->
   <div class="room" id="room-T02">
     <div class="room-tag">Teen Years · II</div>
     <div class="audio-slot">/* AUDIO: silence punctuated by breath, heartbeat, subtle distortion */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: fragmented body collage —<br>magazine-cut aesthetic, b&w<br>no full face, only parts */</div></div>
     <div class="poem">
       there are magazines<br>
       that know exactly<br>
@@ -410,11 +344,9 @@
     </div>
   </div>
 
-  <!-- T-03: The Crowd -->
   <div class="room" id="room-T03">
     <div class="room-tag">Teen Years · II</div>
     <div class="audio-slot">/* AUDIO: crowded hallway reverb, laughter just out of reach */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: blurred crowd of students<br>walking away, your POV behind them<br>motion blur, b&w */</div></div>
     <div class="poem">
       a hallway full of people<br>
       who all seem to know<br>
@@ -437,11 +369,9 @@
     </div>
   </div>
 
-  <!-- T-04: The Diet / The Gym (regret loop) -->
   <div class="room" id="room-T04">
     <div class="room-tag">Teen Years · Loop</div>
     <div class="audio-slot">/* AUDIO: metronome tick, quiet strain, pencil scratching a list */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: a handwritten list<br>with items crossed out<br>clinical, severe, b&w */</div></div>
     <div class="poem">
       rules:<br>
       <em>no.</em><br>
@@ -462,15 +392,11 @@
       <button class="choice" onclick="go('T02')">try again</button>
       <button class="choice" onclick="go('T05')">give up. go to the party.</button>
     </div>
-    <!-- HARLOWE NOTE: use (visited:) to shift/distort poem text on each loop visit -->
-    <div class="back-note">/* HARLOWE: (visited: "T04") to alter text on repeat visits */</div>
   </div>
 
-  <!-- T-05: The Party -->
   <div class="room" id="room-T05">
     <div class="room-tag">Teen Years · III</div>
     <div class="audio-slot">/* AUDIO: muffled music through walls, voices overlapping, too loud */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: out-of-focus party lights<br>or hands holding cups in the dark<br>extreme bokeh, b&w */</div></div>
     <div class="poem">
       the music is too loud<br>
       to hear yourself think<br>
@@ -490,11 +416,9 @@
     </div>
   </div>
 
-  <!-- T-05a: The Cringe — say the thing -->
   <div class="room" id="room-T05a">
     <div class="room-tag">Teen Years · Regret</div>
     <div class="audio-slot">/* AUDIO: sudden silence after words, then low laugh */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: someone's expression<br>mid-reaction — hand to mouth<br>eyes wide, b&w */</div></div>
     <div class="poem">
       you say it<br>
       and the sentence<br>
@@ -516,11 +440,9 @@
     </div>
   </div>
 
-  <!-- T-05b: The Cringe — send the text -->
   <div class="room" id="room-T05b">
     <div class="room-tag">Teen Years · Regret</div>
     <div class="audio-slot">/* AUDIO: message sent whoosh, then silence, then read-receipt ping */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: phone screen glowing in the dark<br>message on left: read. no reply.<br>b&w */</div></div>
     <div class="poem">
       sent<br>
       <div class="poem-rule"></div>
@@ -541,11 +463,9 @@
     </div>
   </div>
 
-  <!-- T-05c: The Cringe — do the dare -->
   <div class="room" id="room-T05c">
     <div class="room-tag">Teen Years · Regret</div>
     <div class="audio-slot">/* AUDIO: crowd egging on, then gasps, then silence, then laugh */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: someone mid-action —<br>blurred, caught, falling slightly<br>faces watching. b&w. */</div></div>
     <div class="poem">
       it seemed<br>
       at the time<br>
@@ -567,11 +487,9 @@
     </div>
   </div>
 
-  <!-- T-06: The Quiet Room (library / sanctuary) -->
   <div class="room" id="room-T06">
     <div class="room-tag">Teen Years · Sanctuary</div>
     <div class="audio-slot">/* AUDIO: library quiet, page turn, faint music through headphones */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: books on a shelf<br>or headphones on a desk<br>afternoon light slant, b&w */</div></div>
     <div class="poem">
       here:<br>
       the library.<br>
@@ -595,11 +513,14 @@
     </div>
   </div>
 
-  <!-- T-07: Leaving School (Teen → Adult threshold) -->
+  <!-- T-07: TRANSITION ROOM — image slot kept -->
   <div class="room" id="room-T07">
     <div class="room-tag">Teen Years · Threshold</div>
     <div class="audio-slot">/* AUDIO: school bell, then silence, then outside air — wind, birds */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: back of a figure walking<br>away from a building, last day —<br>long shadow, b&w */</div></div>
+    <div class="img-slot">
+      <!-- Replace with: <img src="images/teen/leaving.jpg" alt="leaving school"> -->
+      <div class="img-slot-label">/* IMAGE: back of a figure walking<br>away from a building, last day —<br>long shadow, b&w */</div>
+    </div>
     <div class="poem">
       the building<br>
       <em>shrinks</em><br>
@@ -621,15 +542,11 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════
-       STAGE 3: ADULTHOOD
-  ══════════════════════════════ -->
+  <!-- ══ ADULTHOOD ══ -->
 
-  <!-- A-01: The Empty Flat (hub room) -->
   <div class="room" id="room-A01">
     <div class="room-tag">Adulthood · Hub</div>
     <div class="audio-slot">/* AUDIO: empty room resonance — footsteps on bare floor, distant traffic */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: empty room — bare walls<br>one window, afternoon light<br>cardboard box in corner. b&w. */</div></div>
     <div class="poem">
       a room that is<br>
       <em>entirely yours</em><br>
@@ -648,15 +565,11 @@
       <button class="choice" onclick="go('A03')">call someone</button>
       <button class="choice" onclick="go('A04')">look out the window</button>
     </div>
-    <!-- HARLOWE NOTE: hub — player can return here between major decisions -->
-    <div class="back-note">/* HARLOWE: hub passage — player returns here between decisions */</div>
   </div>
 
-  <!-- A-02: The Budget -->
   <div class="room" id="room-A02">
     <div class="room-tag">Adulthood · Money</div>
     <div class="audio-slot">/* AUDIO: keyboard taps, calculator beeps, subtle dread hum */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: spreadsheet or receipts spread<br>on a table — numbers visible but blurred<br>one red figure, b&w */</div></div>
     <div class="poem">
       rent<br>
       electricity<br>
@@ -678,11 +591,9 @@
     </div>
   </div>
 
-  <!-- A-03: Someone You Love -->
   <div class="room" id="room-A03">
     <div class="room-tag">Adulthood · Love</div>
     <div class="audio-slot">/* AUDIO: phone ringing, then voice — soft, familiar */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: two people in a kitchen<br>not looking at the camera —<br>ordinary, warm, b&w */</div></div>
     <div class="poem">
       you don't know<br>
       if it's forever<br>
@@ -706,11 +617,9 @@
     </div>
   </div>
 
-  <!-- A-04: The City / The Window -->
   <div class="room" id="room-A04">
     <div class="room-tag">Adulthood · Scale</div>
     <div class="audio-slot">/* AUDIO: city hum, distant traffic, a siren fading, wind */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: window looking out over<br>rooftops / city at dusk<br>figure silhouette from behind. b&w. */</div></div>
     <div class="poem">
       from here<br>
       you can see<br>
@@ -733,11 +642,9 @@
     </div>
   </div>
 
-  <!-- A-05: Buying a House -->
   <div class="room" id="room-A05">
     <div class="room-tag">Adulthood · Roots</div>
     <div class="audio-slot">/* AUDIO: pen scratching paper, notary's quiet instructions, door key in lock */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: hand signing a document<br>close-up on the pen tip and paper<br>very high contrast, b&w */</div></div>
     <div class="poem">
       you sign your name<br>
       <em>again</em><br>
@@ -760,11 +667,9 @@
     </div>
   </div>
 
-  <!-- A-06: The Career Fork -->
   <div class="room" id="room-A06">
     <div class="room-tag">Adulthood · Work</div>
     <div class="audio-slot">/* AUDIO: office ambience vs. open air — layers cross */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: two paths implied — a desk<br>and a door. or a T-junction in a corridor<br>one lit, one dark. b&w. */</div></div>
     <div class="poem">
       there is the safe thing<br>
       <div class="poem-rule"></div>
@@ -784,15 +689,11 @@
       <button class="choice" onclick="go('A08')">take the leap</button>
       <button class="choice" onclick="go('A08')">stay safe</button>
     </div>
-    <!-- HARLOWE NOTE: both converge at A08 but can carry different variables -->
-    <div class="back-note">/* HARLOWE: both paths → A08, but set a $career variable to track choice */</div>
   </div>
 
-  <!-- A-07: Getting Married -->
   <div class="room" id="room-A07">
     <div class="room-tag">Adulthood · Promise</div>
     <div class="audio-slot">/* AUDIO: string quartet far away, the room before the ceremony */</div>
-    <div class="img-slot"><div class="img-slot-label">/* IMAGE: two hands, fingers interlocked<br>very close, lit from one side<br>b&w, all focus on the hands */</div></div>
     <div class="poem">
       it is strangely<br>
       <em>quiet</em><br>
@@ -817,7 +718,6 @@
     </div>
   </div>
 
-  <!-- A-08: The Ordinary Day (FINAL ROOM — goes green) -->
   <div class="room" id="room-A08">
     <div class="room-tag">Adulthood · Final</div>
     <div class="audio-slot">/* AUDIO: birdsong, a child's voice, kettle boiling, morning sounds */</div>
@@ -847,26 +747,25 @@
     </div>
   </div>
 
-  <!-- END: Stay Here -->
-<div class="room" id="room-end">
-  <div class="room-tag">The End</div>
-  <div class="poem">
-    <em>you stay</em><br>
-    <div class="poem-rule"></div>
-    the garden keeps growing<br>
-    without you<br>
-    having to do anything<br>
-    <div class="poem-rule"></div>
-    this, too,<br>
-    is a kind of answer
+  <!-- END -->
+  <div class="room" id="room-end">
+    <div class="room-tag">The End</div>
+    <div class="poem">
+      <em>you stay</em><br>
+      <div class="poem-rule"></div>
+      the garden keeps growing<br>
+      without you<br>
+      having to do anything<br>
+      <div class="poem-rule"></div>
+      this, too,<br>
+      is a kind of answer
+    </div>
+    <div class="choices">
+      <button class="choice final-choice" onclick="resetJourney()">begin from the start</button>
+    </div>
   </div>
-  <div class="choices">
-    <button class="choice final-choice" onclick="resetJourney()">begin from the start</button>
-  </div>
-</div>
 
-<!-- Flower canvas lives OUTSIDE the room div -->
-<canvas id="flower-canvas"></canvas>
+  <canvas id="flower-canvas"></canvas>
 
 </div><!-- /#stage -->
 
