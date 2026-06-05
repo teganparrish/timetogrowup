@@ -108,8 +108,8 @@ if (roomId === 'B01') {
  */
 function stageTransition(stage, nextRoom) {
   const messages = {
-    teen:  'a black screen.\na door.\nthe sound of a school bell.',
-    adult: 'your name\non a form.\na key.\na number in a bank account\nthat is only yours.'
+    teen:  '',
+    adult: ''
   };
 
   const screen     = document.getElementById('transition-screen');
