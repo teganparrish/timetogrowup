@@ -94,11 +94,11 @@
   <div id="figures-container" style="display:none;">
     <div class="transition-scene">
       <img id="fig-teen"
-           src="teen-figure.png"
+           src="images/teen-figure.png"
            alt="teen figure"
            class="figure-teen">
       <img id="fig-adult"
-           src="adult-figure.png"
+           src="images/adult-figure.png"
            alt="adult figure"
            class="figure-adult">
     </div>
@@ -111,50 +111,48 @@
 
   <!-- TITLE -->
   <div class="room active" id="room-title">
-    <div class="room-tag"></div>
-    <div class="poem">
-      <em>Time to Grow Up</em><br>
-      <div class="poem-rule"></div>
-      Tegan Parrish
-    </div>
-    <div class="choices">
-      <button class="choice grow" onclick="go('B01')">begin</button>
-    </div>
+  <div class="room-tag"></div>
+  <div class="title-image">
+    <img src="images/babyhappy.png" alt="">
   </div>
+  <div class="poem">
+    <em>Time to Grow Up</em><br>
+    <div class="poem-rule"></div>
+    Tegan Parrish
+  </div>
+  <div class="choices">
+    <button class="choice grow" onclick="go('B01')">begin</button>
+  </div>
+</div>
 
   <!-- ══ BIRTH ══ -->
 
   <div class="room" id="room-B01">
-    <div class="room-tag">Birth · I</div>
-    <div class="audio-slot">/* AUDIO: low hum, heartbeat pulse, womb ambience */</div>
-    <div class="room-content">
-      <div class="poem">
-        warmth surrounds<br>
-        <em>it's HOT</em><br>
-        and it beats, beats, beats<br>
-        but not one that's yours<br>
-        <div class="poem-rule"></div>
-        in that red-wine sea<br>
-        can you hear it?<br>
-        buzz through you like vibrations<br>
-        as you suspend<br>
-        <div class="poem-rule"></div>
-        tugged by some invisible force<br>
-        this is you
-      </div>
-      <div class="room-image">
-    
-      </div>
-    </div>
-    <div class="choices">
-      <button class="choice" onclick="go('B02a')">open your eyes</button>
-      <button class="choice" onclick="go('B02b')">cry</button>
-    </div>
+  <div class="room-tag">Birth · I</div>
+  <audio id="audio-b01" src="audio/birth/laughter.mp3"></audio>
+  <div class="poem">
+    warmth surrounds<br>
+    <em>it's HOT</em><br>
+    and it beats, beats, beats<br>
+    but not one that's yours<br>
+    <div class="poem-rule"></div>
+    in that red-wine sea<br>
+    can you hear it?<br>
+    buzz through you like vibrations<br>
+    as you suspend<br>
+    <div class="poem-rule"></div>
+    tugged by some invisible force<br>
+    this is you
   </div>
+  <div class="choices">
+    <button class="choice" onclick="go('B02a')">open your eyes</button>
+    <button class="choice" onclick="go('B02b')">cry</button>
+  </div>
+</div>
 
   <div class="room" id="room-B02a">
     <div class="room-tag">Birth · II</div>
-    <div class="audio-slot">/* AUDIO: sudden ambient rush, high gentle tone */</div>
+    <div class="audio-slot"></div>
     <div class="poem">
       <em>piercing</em><br>
       white bright, white light<br>
@@ -174,7 +172,6 @@
 
   <div class="room" id="room-B02b">
     <div class="room-tag">Birth · II</div>
-    <div class="audio-slot">/* AUDIO: newborn cry fading to silence, then soft lullaby */</div>
     <div class="poem">
       eruption<br>
       sounds bursts out<br>
@@ -197,7 +194,6 @@
 
   <div class="room" id="room-B03">
     <div class="room-tag">Birth · III</div>
-    <div class="audio-slot">/* AUDIO: soft laughter, warm room ambience */</div>
     <div class="poem">
       a face above yours<br>
       <em>creases</em><br>
@@ -220,7 +216,6 @@
 
   <div class="room" id="room-B04">
     <div class="room-tag">Birth · IV</div>
-    <div class="audio-slot">/* AUDIO: carpet texture sounds, distant voices, movement */</div>
     <div class="poem">
       the floor is<br>
       <em>an entire country</em><br>
@@ -244,7 +239,6 @@
 
   <div class="room" id="room-B05">
     <div class="room-tag">Birth · V</div>
-    <div class="audio-slot">/* AUDIO: hush of a room, then one syllable, then gasps/delight */</div>
     <div class="poem">
       a syllable escapes—<br>
       <em>clumsy</em><br>
@@ -269,11 +263,6 @@
   <!-- B-06: TRANSITION ROOM — image slot kept -->
   <div class="room" id="room-B06">
     <div class="room-tag">Birth · Threshold</div>
-    <div class="audio-slot">/* AUDIO: happy birthday being sung, off-key and warm */</div>
-    <div class="img-slot">
-      <!-- Replace with: <img src="images/birth/candles.jpg" alt="birthday candles"> -->
-      <div class="img-slot-label">/* IMAGE: birthday cake with lit candles<br>extreme close-up, candlelight glow<br>faces blurred in background */</div>
-    </div>
     <div class="poem">
       a room full of people<br>
       singing<br>
@@ -297,7 +286,6 @@
 
   <div class="room" id="room-T01">
     <div class="room-tag">Teen Years · I</div>
-    <div class="audio-slot">/* AUDIO: school hall noise, distant chatter, locker doors */</div>
     <div class="poem">
       your body has changed<br>
       <em>without asking permission</em><br>
@@ -321,7 +309,6 @@
 
   <div class="room" id="room-T02">
     <div class="room-tag">Teen Years · II</div>
-    <div class="audio-slot">/* AUDIO: silence punctuated by breath, heartbeat, subtle distortion */</div>
     <div class="poem">
       there are magazines<br>
       that know exactly<br>
@@ -346,7 +333,6 @@
 
   <div class="room" id="room-T03">
     <div class="room-tag">Teen Years · II</div>
-    <div class="audio-slot">/* AUDIO: crowded hallway reverb, laughter just out of reach */</div>
     <div class="poem">
       a hallway full of people<br>
       who all seem to know<br>
@@ -371,7 +357,6 @@
 
   <div class="room" id="room-T04">
     <div class="room-tag">Teen Years · Loop</div>
-    <div class="audio-slot">/* AUDIO: metronome tick, quiet strain, pencil scratching a list */</div>
     <div class="poem">
       rules:<br>
       <em>no.</em><br>
@@ -396,7 +381,6 @@
 
   <div class="room" id="room-T05">
     <div class="room-tag">Teen Years · III</div>
-    <div class="audio-slot">/* AUDIO: muffled music through walls, voices overlapping, too loud */</div>
     <div class="poem">
       the music is too loud<br>
       to hear yourself think<br>
@@ -418,7 +402,6 @@
 
   <div class="room" id="room-T05a">
     <div class="room-tag">Teen Years · Regret</div>
-    <div class="audio-slot">/* AUDIO: sudden silence after words, then low laugh */</div>
     <div class="poem">
       you say it<br>
       and the sentence<br>
@@ -442,7 +425,6 @@
 
   <div class="room" id="room-T05b">
     <div class="room-tag">Teen Years · Regret</div>
-    <div class="audio-slot">/* AUDIO: message sent whoosh, then silence, then read-receipt ping */</div>
     <div class="poem">
       sent<br>
       <div class="poem-rule"></div>
@@ -465,7 +447,6 @@
 
   <div class="room" id="room-T05c">
     <div class="room-tag">Teen Years · Regret</div>
-    <div class="audio-slot">/* AUDIO: crowd egging on, then gasps, then silence, then laugh */</div>
     <div class="poem">
       it seemed<br>
       at the time<br>
@@ -489,7 +470,6 @@
 
   <div class="room" id="room-T06">
     <div class="room-tag">Teen Years · Sanctuary</div>
-    <div class="audio-slot">/* AUDIO: library quiet, page turn, faint music through headphones */</div>
     <div class="poem">
       here:<br>
       the library.<br>
@@ -516,11 +496,6 @@
   <!-- T-07: TRANSITION ROOM — image slot kept -->
   <div class="room" id="room-T07">
     <div class="room-tag">Teen Years · Threshold</div>
-    <div class="audio-slot">/* AUDIO: school bell, then silence, then outside air — wind, birds */</div>
-    <div class="img-slot">
-      <!-- Replace with: <img src="images/teen/leaving.jpg" alt="leaving school"> -->
-      <div class="img-slot-label">/* IMAGE: back of a figure walking<br>away from a building, last day —<br>long shadow, b&w */</div>
-    </div>
     <div class="poem">
       the building<br>
       <em>shrinks</em><br>
@@ -546,7 +521,6 @@
 
   <div class="room" id="room-A01">
     <div class="room-tag">Adulthood · Hub</div>
-    <div class="audio-slot">/* AUDIO: empty room resonance — footsteps on bare floor, distant traffic */</div>
     <div class="poem">
       a room that is<br>
       <em>entirely yours</em><br>
@@ -569,7 +543,6 @@
 
   <div class="room" id="room-A02">
     <div class="room-tag">Adulthood · Money</div>
-    <div class="audio-slot">/* AUDIO: keyboard taps, calculator beeps, subtle dread hum */</div>
     <div class="poem">
       rent<br>
       electricity<br>
@@ -593,7 +566,6 @@
 
   <div class="room" id="room-A03">
     <div class="room-tag">Adulthood · Love</div>
-    <div class="audio-slot">/* AUDIO: phone ringing, then voice — soft, familiar */</div>
     <div class="poem">
       you don't know<br>
       if it's forever<br>
@@ -619,7 +591,6 @@
 
   <div class="room" id="room-A04">
     <div class="room-tag">Adulthood · Scale</div>
-    <div class="audio-slot">/* AUDIO: city hum, distant traffic, a siren fading, wind */</div>
     <div class="poem">
       from here<br>
       you can see<br>
@@ -644,7 +615,6 @@
 
   <div class="room" id="room-A05">
     <div class="room-tag">Adulthood · Roots</div>
-    <div class="audio-slot">/* AUDIO: pen scratching paper, notary's quiet instructions, door key in lock */</div>
     <div class="poem">
       you sign your name<br>
       <em>again</em><br>
@@ -669,7 +639,6 @@
 
   <div class="room" id="room-A06">
     <div class="room-tag">Adulthood · Work</div>
-    <div class="audio-slot">/* AUDIO: office ambience vs. open air — layers cross */</div>
     <div class="poem">
       there is the safe thing<br>
       <div class="poem-rule"></div>
@@ -693,7 +662,6 @@
 
   <div class="room" id="room-A07">
     <div class="room-tag">Adulthood · Promise</div>
-    <div class="audio-slot">/* AUDIO: string quartet far away, the room before the ceremony */</div>
     <div class="poem">
       it is strangely<br>
       <em>quiet</em><br>
@@ -720,7 +688,6 @@
 
   <div class="room" id="room-A08">
     <div class="room-tag">Adulthood · Final</div>
-    <div class="audio-slot">/* AUDIO: birdsong, a child's voice, kettle boiling, morning sounds */</div>
     <div class="poem">
       Tuesday<br>
       <div class="poem-rule"></div>
@@ -750,6 +717,7 @@
   <!-- END -->
   <div class="room" id="room-end">
     <div class="room-tag">The End</div>
+<audio id="audio-end" src="audio/adult/morning.mp3"></audio>
     <div class="poem">
       <em>you stay</em><br>
       <div class="poem-rule"></div>
@@ -770,5 +738,7 @@
 </div><!-- /#stage -->
 
 <script src="js/main.js"></script>
+<audio id="audio-bell"   src="audio/transitions/bellring.mp3"></audio>
+<audio id="audio-typing" src="audio/transitions/typing.mp3"></audio>
 </body>
 </html>

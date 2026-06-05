@@ -78,6 +78,22 @@ function go(roomId) {
 
   // Update stage label (top-right)
   updateStageLabel(roomId);
+  // Stop all room audio first
+document.querySelectorAll('audio[id^="audio-"]').forEach(a => {
+  a.pause();
+  a.currentTime = 0;
+});
+
+// Play audio for specific rooms
+if (roomId === 'B01') {
+  setTimeout(() => {
+    const a = document.getElementById('audio-b01');
+    if (a) {
+      a.currentTime = 0;
+      a.play().catch(() => {});
+    }
+  }, 300);
+}
 }
 
 /* ══════════════════════════════════════════
@@ -95,26 +111,63 @@ function stageTransition(stage, nextRoom) {
     teen:  'a black screen.\na door.\nthe sound of a school bell.',
     adult: 'your name\non a form.\na key.\na number in a bank account\nthat is only yours.'
   };
-   const screen   = document.getElementById('transition-screen');
-  const textEl   = document.getElementById('transition-text');
-  const bellEl   = document.getElementById('bell-container');
+
+  const screen     = document.getElementById('transition-screen');
+  const textEl     = document.getElementById('transition-text');
+  const bellEl     = document.getElementById('bell-container');
+  const figuresEl  = document.getElementById('figures-container');
 
   textEl.textContent = messages[stage] || '';
   screen.classList.add('active');
 
-  // Show bell only for birth → teen transition
+  // ── AUDIO ──
+const transAudio = document.getElementById(
+  stage === 'teen' ? 'audio-bell' : 'audio-typing'
+);
+if (transAudio) {
+  transAudio.currentTime = 0;
+  transAudio.play().catch(() => {});
+}
+
+  // Show bell for birth → teen only
   if (bellEl) {
     bellEl.style.display = stage === 'teen' ? 'block' : 'none';
+  }
+
+  // Show figures for teen → adult only, and reset their animations
+  if (figuresEl) {
+    if (stage === 'adult') {
+      figuresEl.style.display = 'block';
+      const teen  = document.getElementById('fig-teen');
+      const adult = document.getElementById('fig-adult');
+      if (teen) {
+        teen.style.animation = 'none';
+        teen.offsetHeight;
+        teen.style.animation = '';
+      }
+      if (adult) {
+        adult.style.animation = 'none';
+        adult.offsetHeight;
+        adult.style.animation = '';
+      }
+    } else {
+      figuresEl.style.display = 'none';
+    }
   }
 
   document.getElementById('stage-label').textContent =
     STAGE_LABELS[stage === 'teen' ? 'teen' : 'adult'];
 
+  // Adult transition runs longer to show both figures appearing
+  const duration = stage === 'adult' ? 5000 : 2800;
+  
   setTimeout(() => {
-    screen.classList.remove('active');
-    if (bellEl) bellEl.style.display = 'none';
-    go(nextRoom);
-  }, 2800);
+  screen.classList.remove('active');
+  if (transAudio) { transAudio.pause(); transAudio.currentTime = 0; }
+  if (bellEl)    bellEl.style.display    = 'none';
+  if (figuresEl) figuresEl.style.display = 'none';
+  go(nextRoom);
+}, duration);
 }
 /* ══════════════════════════════════════════
    PROGRESS & GARDEN
@@ -220,6 +273,10 @@ function stayHere() {
   const end = document.getElementById('room-end');
   if (end) end.classList.add('active');
 
+   // Play end room audio
+  const a = document.getElementById('audio-end');
+  if (a) a.play().catch(() => {});
+
   // Bloom flowers after a short pause
   setTimeout(bloomEndFlowers, 600);
 }
@@ -239,6 +296,12 @@ function resetJourney() {
   bar.style.width      = '0%';
 
   document.getElementById('stage-label').textContent = 'Birth';
+  
+  // Stop all audio on reset
+document.querySelectorAll('audio[id^="audio-"]').forEach(a => {
+  a.pause();
+  a.currentTime = 0;
+});
 
   // Reset garden opacity and colour
   GARDEN_LAYERS.forEach(layer => {
@@ -325,36 +388,35 @@ function bloomEndFlowers() {
   }
 
   const flowers = [];
-  const gardenHeight = window.innerHeight * 0.42; // leave garden area clear
+const gardenHeight = window.innerHeight * 0.42;
 
-  for (let i = 0; i < 28; i++) {
-    const side = Math.random();
-    let x, y;
+const zones = [
+  { x: 0.06, y: 0.10 },
+  { x: 0.18, y: 0.50 },
+  { x: 0.08, y: 0.75 },
+  { x: 0.88, y: 0.12 },
+  { x: 0.92, y: 0.55 },
+  { x: 0.82, y: 0.78 },
+  { x: 0.30, y: 0.08 },
+  { x: 0.70, y: 0.06 },
+  { x: 0.15, y: 0.30 },
+  { x: 0.85, y: 0.35 },
+];
 
-    if (side < 0.3) {
-      // left strip
-      x = 30 + Math.random() * 200;
-      y = 40 + Math.random() * (window.innerHeight - gardenHeight - 40);
-    } else if (side < 0.6) {
-      // right strip
-      x = window.innerWidth - 30 - Math.random() * 200;
-      y = 40 + Math.random() * (window.innerHeight - gardenHeight - 40);
-    } else {
-      // top strip
-      x = Math.random() * window.innerWidth;
-      y = 30 + Math.random() * 160;
-    }
+zones.forEach((zone, i) => {
+  const x = zone.x * window.innerWidth  + (Math.random() * 30 - 15);
+  const y = zone.y * (window.innerHeight - gardenHeight) + (Math.random() * 20 - 10);
 
-    flowers.push({
-  x,
-  y,
-  size:      18 + Math.random() * 22,
-  alpha:     0,
-  delay:     800 + Math.random() * 10000,  // spread over 10 seconds
-  fadeSpeed: 0.001 + Math.random() * 0.002, // much slower fade in
-  color:     greens[Math.floor(Math.random() * greens.length)],
+  flowers.push({
+    x,
+    y,
+    size:      22 + Math.random() * 16,
+    alpha:     0,
+    delay:     i * 900 + Math.random() * 400,
+    fadeSpeed: 0.0008,
+    color:     greens[Math.floor(Math.random() * greens.length)],
+  });
 });
-  }
 
   let lastTime = null;
   let startTime = null;
@@ -385,3 +447,10 @@ function bloomEndFlowers() {
 
   requestAnimationFrame(animate);
 }
+// Unlock audio context on first user interaction
+document.addEventListener('click', function unlockAudio() {
+  document.querySelectorAll('audio').forEach(a => {
+    a.load();
+  });
+  document.removeEventListener('click', unlockAudio);
+}, { once: true });
